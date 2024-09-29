@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Índice de Massa Corporal (IMC)</title>
+    <style>
+        body{
+            font: Normal 10pt Arial
+        }
+        div{
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sistema de IMC (Índice de Massa Corporal)</h1>
+    Peso: <input type="number" name="txtpeso" id="txtpeso">
+    Altura: <input type="number" name="txtaltura" id="txtaltura">
+    <input type="button" value="Calcular" onclick="calcular()">
+    <div id="res">
+        Resultado...
+    </div>
+    <script>
+        function calcular(){
+            var peso = window.document.getElementById('txtpeso')
+            var altura = window.document.getElementById('txtaltura')
+            var res = window.document.getElementById('res')
+            var p = Number.parseFloat(peso.value)
+            var a = Number.parseFloat(altura.value)
+            var resultado = p / a ** 2
+            res.innerHTML = `<p>Seu IMC é de <strong>${resultado}</strong></p>`
+            if(resultado <= 18.5){
+                res.innerHTML += '<p>Abaixo do Normal - Procure um Médico!! Você está <strong>EXAGERADAMENTE MAGRO</strong>!!</p>'
+            }
+            else if(resultado <= 24.9){
+                res.innerHTML += '<p>Peso Normal - <strong>PARABÉNS!! VOCÊ ESTÁ COM O PESO NORMAL. CONTINUE ASSIM!</strong></p>'
+            }
+            else if(resultado <= 29.9){
+                res.innerHTML += '<p>Sobrepeso - Sinal de Pré-Obesidade. Reveja seus hábitos o quanto antes!</p>'
+            }
+            else if(resultado <= 34.9){
+                res.innerHTML += '<p>Obesidade Grau I - Sinal de Alerta! Comece a se cuidar <strong>ANTES QUE PIORE!!</strong></p>'
+            }
+            else if(resultado <= 39.9){
+                res.innerHTML += '<p>Obesidade Grau II - Mude seu estilo de Vida! Comece uma Rotina de <strong>DIETA e EXERCÍCIOS!!</strong></p>'
+            }
+            else{
+                res.innerHTML += '<p>Obesidade Grau III - <strong>ALERTA VERMELHO!!</strong> PROCURE UM MÉDICO IMEDIATAMENTE!!</p>'
+            }
+        }
+    </script>
+</body>
+</html>
